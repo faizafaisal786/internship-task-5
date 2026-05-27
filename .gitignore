@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+.env
+server/.env
+client/.env
+*.env.local
+*.log
+.DS_Store
+Thumbs.db
+server/data/*.db
+server/data/*.db-*
+server/tests/test-saas.db
+server/tests/test-saas.db-*
