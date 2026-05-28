@@ -1,119 +1,128 @@
-# Nexus SaaS Dashboard
+# 🚀 Nexus SaaS Dashboard - Elite Analytics Platform
 
-A full-stack SaaS dashboard built for **Internship Task 5**, featuring role-based authentication, analytics charts, activity logs, a settings panel, and API rate limiting.
+[![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.4-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38BDEF?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Express](https://img.shields.io/badge/Express-4.19-000000?logo=express&logoColor=white)](https://expressjs.com/)
+[![SQLite](https://img.shields.io/badge/SQLite-3.0-003B57?logo=sqlite&logoColor=white)](https://sqlite.org/)
+[![Gemini AI](https://img.shields.io/badge/Gemini_AI-Pro-4285F4?logo=google-gemini&logoColor=white)](https://deepmind.google/technologies/gemini/)
 
-![Stack](https://img.shields.io/badge/React-18-61dafb)
-![Stack](https://img.shields.io/badge/Express-4-000000)
-![Stack](https://img.shields.io/badge/TypeScript-5-3178c6)
-![Stack](https://img.shields.io/badge/Tailwind-3-38bdf8)
+Nexus is a state-of-the-art, full-stack SaaS dashboard designed for high-performance data visualization and user management. Built as the flagship project for **Internship Task 5**, it integrates advanced security, real-time analytics, and AI-driven insights into a seamless user experience.
 
-## Features
+---
 
-| Feature | Description |
-|---------|-------------|
-| **Role-based login** | JWT auth with `admin` and `user` roles; protected routes and role-gated API endpoints |
-| **Analytics charts** | Revenue area chart, traffic bar chart, plan distribution pie chart, KPI cards |
-| **Activity logs** | Searchable audit trail; admins see all users, users see only their own activity |
-| **Settings panel** | Profile, theme, notifications, 2FA toggle; admin user management table |
-| **API rate limiting** | Global limit (100 req / 15 min) + stricter auth limit (10 login attempts / 15 min) |
+## ✨ Key Features
 
-## Demo Accounts
+### 🔐 Enterprise-Grade Security
+- **Role-Based Access Control (RBAC):** Granular permissions for `Admin` and `User` roles.
+- **Secure Authentication:** JWT-based sessions with hashed password storage (bcrypt).
+- **Intelligent Rate Limiting:** Global and auth-specific protection against brute-force attacks.
 
-| Role  | Email            | Password  |
-|-------|------------------|-----------|
-| Admin | admin@saas.com   | admin123  |
-| User  | user@saas.com    | user123   |
+### 📊 Advanced Analytics
+- **Dynamic Charts:** Interactive revenue flows, traffic patterns, and user distribution using **Recharts**.
+- **Real-time KPIs:** Instant visibility into critical business metrics.
+- **AI-Driven Insights:** Integrated with **Google Gemini Pro** to provide automated analysis of your data.
 
-## Project Structure
+### 🛠️ Professional Management
+- **Audit Trails:** Comprehensive activity logs with advanced filtering and search.
+- **User Administration:** Full control over user accounts and settings (Admin only).
+- **Live Customization:** Instant theme switching (Light/Dark/System) and profile management.
 
-```
-internship-5/
-├── client/          # React + Vite + Tailwind + Recharts
-├── server/          # Express + TypeScript + JWT + Rate Limiting
-├── package.json     # Root scripts to run both apps
-└── README.md
-```
+### 💾 Robust Architecture
+- **Persistent Storage:** SQLite database for reliable data management across restarts.
+- **Type Safety:** End-to-end TypeScript for a bug-free development experience.
+- **Clean Code:** Highly modular structure following industry best practices.
 
-## Quick Start
+---
 
-### Prerequisites
+## 🏗️ Project Architecture
 
-- Node.js 18+ and npm
-
-### Install & Run
-
-```bash
-# From internship-5 folder
-npm install
-npm run install:all
-
-# Start API + frontend together
-npm run dev
-```
-
-- **Frontend:** http://localhost:5173  
-- **API:** http://localhost:5000/api/health  
-
-Or run separately:
-
-```bash
-npm run dev:server   # API on :5000
-npm run dev:client   # UI on :5173
-```
-
-## API Endpoints
-
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/health` | — | Health check |
-| POST | `/api/auth/login` | — | Login (rate limited) |
-| GET | `/api/auth/me` | JWT | Current user |
-| POST | `/api/auth/logout` | JWT | Logout + audit log |
-| GET | `/api/analytics/overview` | JWT | Dashboard metrics |
-| GET | `/api/activity` | JWT | Activity logs (filtered by role) |
-| GET | `/api/activity/stats` | Admin | Log statistics |
-| GET/PATCH | `/api/settings` | JWT | Profile & preferences |
-| GET | `/api/settings/users` | Admin | List all users |
-
-## Gemini AI (optional)
-
-Add your key to **`server/.env`** only (never commit this file):
-
-```env
-GEMINI_API_KEY=your-key-here
-```
-
-The dashboard **AI Insights** card calls Gemini through the backend so the key never reaches the browser. Use `server/.env.example` as a template.
-
-## Rate Limiting
-
-Configured in `server/.env`:
-
-- `RATE_LIMIT_MAX=100` — max requests per window for all `/api/*` routes
-- Auth routes use a separate **10 requests / 15 minutes** limit to prevent brute-force attacks
-
-When exceeded, the API returns `429` with code `RATE_LIMIT_EXCEEDED`.
-
-## Improvements (v1.1)
-
-- **SQLite database** — users, settings, and activity logs persist in `server/data/saas.db` (survives server restart)
-- **Live theme switching** — Light / Dark / System in Settings applies instantly across the UI
-- **API tests** — run `npm test` from project root (Vitest + Supertest)
-
-## Tech Stack
-
-**Frontend:** React 18, Vite, TypeScript, Tailwind CSS, Recharts, React Router, Lucide icons  
-
-**Backend:** Express, TypeScript, JWT, bcrypt, express-rate-limit, CORS
-
-## Build for Production
-
-```bash
-npm run build
-cd server && npm start
-cd client && npm run preview
+```text
+📦 internship-5
+├── 🎨 client             # React + Vite Frontend
+│   ├── 🧩 components     # Reusable UI primitives
+│   ├── 📑 pages          # Dashboard, Activity, Settings
+│   └── 🧪 context        # State management (Auth/Theme)
+├── ⚙️ server             # Express + Node.js Backend
+│   ├── 🛣️ routes         # API endpoint definitions
+│   ├── 🛡️ middleware     # Auth, Security, Validation
+│   └── 🤖 services       # External integrations (Gemini)
+└── 📦 data               # SQLite persistent storage
 ```
 
 ---
 
-Built as part of the internship portfolio — Task 5: SaaS Dashboard.
+## 🚀 Quick Start
+
+### Prerequisites
+- **Node.js:** v18.0 or higher
+- **Package Manager:** npm (v9+)
+
+### Installation
+
+1. **Clone & Install Dependencies:**
+   ```bash
+   # Install root and both workspace dependencies
+   npm install
+   npm run install:all
+   ```
+
+2. **Configure Environment:**
+   Create a `.env` file in the `server/` directory:
+   ```env
+   PORT=5000
+   JWT_SECRET=your_super_secret_key
+   GEMINI_API_KEY=your_google_gemini_key
+   ```
+
+3. **Launch Development Environment:**
+   ```bash
+   # Starts both Client (5173) and Server (5000)
+   npm run dev
+   ```
+
+---
+
+## 🔐 Test Accounts
+
+| Role | Email | Password |
+| :--- | :--- | :--- |
+| **Administrator** | `admin@saas.com` | `admin123` |
+| **Standard User** | `user@saas.com` | `user123` |
+
+---
+
+## 🔌 API Documentation
+
+| Method | Endpoint | Auth | Purpose |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/auth/login` | None | Identity verification & JWT issuance |
+| `GET` | `/api/analytics` | JWT | Fetching dashboard data points |
+| `GET` | `/api/activity` | JWT | Role-filtered audit logs |
+| `PATCH` | `/api/settings` | JWT | Updating user preferences |
+| `GET` | `/api/insights` | JWT | Gemini-powered data analysis |
+
+---
+
+## 🧪 Testing & Validation
+
+Maintain high code quality with our integrated test suite:
+
+```bash
+# Run backend API tests
+npm test
+```
+
+---
+
+## 🛠️ Built With
+
+- **Frontend:** React, TypeScript, Tailwind CSS, Recharts, Lucide Icons
+- **Backend:** Node.js, Express, TypeScript, JWT, SQLite, Gemini AI SDK
+- **Testing:** Vitest, Supertest
+
+---
+
+<div align="center">
+  <p><i>Developed with ❤️ for the Internship Portfolio — 2024</i></p>
+</div>
