@@ -124,5 +124,5 @@ npm test
 ---
 
 <div align="center">
-  <p><i>Developed with ❤️ for the Internship Portfolio — 2024</i></p>
+  <p><i>Developed with ❤️ for the Internship task — May 2026</i></p>
 </div>
